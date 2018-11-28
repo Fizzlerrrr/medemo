@@ -13,16 +13,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/bot_5.html', function (req, res) {
-   res.sendFile(path.join(__dirname, "//bot_5.html") );  // 前端
-});
-app.get('/bot_4.html', function (req, res) {
-   res.sendFile(path.join(__dirname, "//bot_4.html") );  // 前端
-});
-app.get('/bot_3.html', function (req, res) {
-   res.sendFile(path.join(__dirname, "//bot_3.html") );  // 前端
-});
-app.get('/bot_1.html', function (req, res) {
-   res.sendFile(path.join(__dirname, "//bot_1.html") );  // 前端
+   res.sendFile(path.join(__dirname, "//bot.html") );  // 前端
 });
 
 var server = app.listen(80, function () {
