@@ -12,7 +12,7 @@ app.get('/', function (req, res) {
    res.sendFile(path.join(__dirname, "//index.html") );  // 前端
 });
 
-app.get('/bot_5.html', function (req, res) {
+app.get('/bot.html', function (req, res) {
    res.sendFile(path.join(__dirname, "//bot.html") );  // 前端
 });
 
