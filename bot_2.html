@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <title>Emotion Bot Demo 4</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- Material Kit CSS -->
+  <link href="css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+  <!-- Style CSS --> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.min.css'>
+  <link rel="stylesheet" href="css/style_bot.css">
+  <link rel="stylesheet" href="css/clock.css">
+  <link rel="stylesheet" href="css/botchat.css">
+  <link rel="stylesheet" href="css/botchat-fullwindow.css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300'>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src="js/bundle.js"></script>
+  <script src="/socket.io/socket.io.js"> </script>
+  <script src="js/recorder.js"></script>
+  <style type='text/css'>
+    ul { list-style: none; }
+    #recordingslist audio { display: block; margin-bottom: 10px; }
+  </style>   
+<script type="text/javascript" src="js/webcam.min.js"></script>
+  <script type="text/javascript" src="js/emotioncam.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.concat.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TimelineMax.min.js'></script>
+</head>
+<body>
+<div class="wrapper">
+    <!-- Main Panel -->
+    <div class="main-panel">    
+    <!-- Navbar --> 
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <a class="navbar-brand" href="#lrj">DEMO_医患情绪沟通模拟训练系统</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end">
+            <form class="navbar-form">
+              <div class="input-group no-border">
+                <input type="text" value="" class="form-control" placeholder="Search...">
+                <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                  <i class="material-icons">search</i>
+                  <div class="ripple-container"></div>
+                </button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </nav> 
+    <!-- Content --> 
+    <br>
+    <div class="content">
+    <div class="container-fluid">
+    <!-- Modules -->
+
+    <div class="row">
+            <!-- Timer -->
+            <div class="col-md-4">
+              <div class="card card-chart">
+                <div class="card-header card-header-success">
+                    <div style = "position: relative; left: 40px">
+                    <br><br><br><br>
+
+  <ul class="hourTens"><li>0</li><li>1</li><li>2</li></ul>
+  <ul class="hourOnes"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li></ul>
+
+  <ul class="minuteTens"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li></ul>
+  <ul class="minuteOnes"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li></ul>
+
+  <ul class="secondTens"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li></ul>
+  <ul class="secondOnes"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li></ul>
+                    <br><br><br><br><br>
+
+            </div>
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title">当前模拟训练时间</h4>
+                  <p class="card-category">Training Time</p>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">access_time</i> Tips: 请注意调节语速和思考时间。
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Emotion -->
+            <div class="col-md-4">
+              <div class="card card-chart">
+                <div class="card-header card-header-warning">
+                  <div class="ct-chart" id="websiteViewsChart"></div>
+                </div>
+                <div class="card-body">
+                        <div id="my_camera" style="display:none"></div>
+	                      <script language="JavaScript">
+		                  Webcam.set({
+			width: 320,
+			height: 240,
+			image_format: 'jpeg',
+			jpeg_quality: 90
+		});
+		                  Webcam.attach( '#my_camera' );
+                          </script>
+                        <div id="imageDiv">
+<!--        <img id="c"/>-->
+        <img id="c"/ style="display:none">
+
+        
+         <textarea id="responseTextArea" class="UIInput" style="display:none; width:300px; height:200px;"></textarea>
+                        </div>
+                        
+                  <h4 class="card-title">实时面部情绪检测  
+                      <button onclick="snap_emo();" class="btn btn-primary btn-round">>测试</button>
+                      <button onclick="auto_snap();" class="btn btn-primary btn-round">>开始检测</button></h4>
+                  <p class="card-category">Realtime Emotion Recognition</p>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">access_time</i> Tips: 请注意保持平和、愉悦的面部表情。
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Volume -->
+            <div class="col-md-4">
+              <div class="card card-chart">
+                <div class="card-header card-header-success">
+                    
+                    <br><br>
+                    <canvas id="meter" width="500" height="20"></canvas>
+                    <span>|─────较低─────适中─────较高─────|</span>
+                    
+                    <br><br><br><br>
+                    
+<!--                    <p>Oops!<br> 当前audio通道占用中，无法获取对话音量</p>-->
+                    
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title">当前对话音量</h4>
+                  <p class="card-category">Current Volume</p>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">access_time</i> Tips: 请注意调节音量。
+                  </div>
+                </div>
+              </div>
+            </div>
+    </div>
+    <div class="row">
+            <!-- Chatbot -->
+            <div class="col-lg-6 col-md-12">  
+      <div class="card">
+ 
+    <div class="card-chat">
+  <iframe class = "card-chat" src="https://webchat.botframework.com/embed/emobotrj?features=webchatpreview&t=eyJhbGciOiJSUzI1NiIsImtpZCI6IjlRRkNPSDJXaXgzVWVkLXIxNmNMU1BOYm02YyIsIng1dCI6IjlRRkNPSDJXaXgzVWVkLXIxNmNMU1BOYm02YyIsInR5cCI6IkpXVCJ9.eyJib3QiOiJlbW9ib3RyaiIsImNvbnYiOiJkNDY0MGE3M2U2NTQ0ZWEzYjY3YjMwZDRiNzc0YzgyMCIsIm9yaWdpbiI6Imh0dHBzOi8vd2ViY2hhdC5ib3RmcmFtZXdvcmsuY29tLyIsIm5iZiI6MTU0MzQyMDE0OSwiZXhwIjoxNTQzNDIzNzQ5LCJpc3MiOiJodHRwczovL2Rldi5ib3RmcmFtZXdvcmsuY29tLyIsImF1ZCI6Imh0dHBzOi8vd2ViY2hhdC5ib3RmcmFtZXdvcmsuY29tLyJ9.LaPOdMtkNfOGnH6Q3npWuVjOrURQYmOeseYaD74W6OB_6ZxXu-Af9aZJ_keqrDD0kPJGqdp1GEgkvuw8hnR8hRV8P8EKLexhV9-wN8qqOD1jWtuhvBNct5aVh0KwqfkPUJS8tQdbzTXZ5URer1qL-smGhABLw1jGVaTVUTV6CNZFUhrtxn9E47o2gCzyCIXt_T7eqC-fXBOrrIL2NSGi1SK0WwXfTndX-FbvOsZvV4ryOWSQv_4soFuToPWCVrpkf_3_qktoJdqlNJ6cnYYMbTjQtjIzh3u6nhcmKVIj90te0_7QdScfXMvrEv4oD7gKdTpj6bFjW1brtzo40TgR4w&l=en.zh-cn"></iframe>
+    </div>
+    </div>
+    </div>
+            <!-- VP -->  
+            <div class="col-lg-6 col-md-12">
+              <div class="card">
+                <div class="card-header card-header-tabs card-header-primary">
+                  <div class="nav-tabs-navigation">
+                    <div class="nav-tabs-wrapper">
+                      <span class="nav-tabs-title">虚拟患者
+                         <button onclick="set_anger()" class="btn btn-primary btn-round">>Anger</button>
+                 <button onclick="set_sad();" class="btn btn-primary btn-round">>Sadness</button>
+                 <button onclick="set_n();" class="btn btn-primary btn-round">>Neutral</button></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                <video id="video_emo" controls width="500" height="220" autoplay loop muted>
+                <source src="video/anger.mp4" type="video/mp4">
+                </video>
+                    <script>
+                    function set_anger(){
+                        document.getElementById('video_emo').src = "video/anger.mp4"
+                    }
+                        function set_sad(){
+                        document.getElementById('video_emo').src = "video/sad.mp4"
+                    }
+                        function set_n(){
+                        document.getElementById('video_emo').src = "video/neutral.mp4"
+                    }
+                    </script>
+                    
+                    
+                </div>
+              </div>
+            </div>
+    </div>       
+    </div>
+    </div> 
+    </div>
+</div>
+
+  <script src="/assets/js/core/popper.min.js"></script>
+  <script src="/assets/js/core/bootstrap-material-design.min.js"></script>
+  <script src="/assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+  <script src="/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="/assets/js/plugins/chartist.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $().ready(function() {
+        $sidebar = $('.sidebar');
+
+        $full_page = $('.full-page');
+
+        $sidebar_responsive = $('body > .navbar-collapse');
+
+        window_width = $(window).width();
+
+        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+        if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
+          if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
+            $('.fixed-plugin .dropdown').addClass('open');
+          }
+
+        }
+      });
+    });
+  </script>
+  <script src="js/volume-meter.js"></script>
+  <script src="js/main-volume.js"></script> 
+  <script src="js/index.js"></script>
+</body>
+</html>
+

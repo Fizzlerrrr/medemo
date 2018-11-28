@@ -16,6 +16,10 @@ app.get('/bot.html', function (req, res) {
    res.sendFile(path.join(__dirname, "//bot.html") );  // 前端
 });
 
+app.get('/bot_2.html', function (req, res) {
+   res.sendFile(path.join(__dirname, "//bot_2.html") );  // 前端
+});
+
 var server = app.listen(80, function () {
 var host = server.address().address
 var port = server.address().port
