@@ -227,8 +227,9 @@ header .navbar .dropdown-menu a {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  height: calc(100vh - 117px);
-  min-height: 700px;
+  height: 800px;
+/*      height: calc(100vh - 117px);*/
+  min-height: 800px;
 }
 
 .owl-carousel.home-slider .slider-item .slider-text {
@@ -542,7 +543,7 @@ header .navbar .dropdown-menu a {
 .cover_1 {
   background-size: cover;
   background-position: center center;
-  padding: 7em 0;
+  padding: 14em 0;
 }
 
 .cover_1 .sub-heading {
