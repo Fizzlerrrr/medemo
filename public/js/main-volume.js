@@ -93,7 +93,7 @@ function drawLoop( time ) {
     if (meter.checkClipping())
         canvasContext.fillStyle = "red";
     else
-        canvasContext.fillStyle = "green";
+        canvasContext.fillStyle = "white";
 
     // draw a bar based on the current volume
     canvasContext.fillRect(0, 0, meter.volume*WIDTH*1.4, HEIGHT);
