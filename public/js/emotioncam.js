@@ -61,8 +61,10 @@
                 processData: false,
                 
                 success: function (data, status) {
-                console.log(JSON.stringify(data[0].faceAttributes.emotion.neutral));
+                console.log(JSON.stringify(data[0].faceAttributes.emotion));
                     chart_emo(data);
+//                    console.log(JSON.stringify(data[0].faceAttributes.emotion.neutral));
+//                    chart_emo(data);
                  $("#responseTextArea").val(JSON.stringify(data, null, 2));
             },
                 error: function (xhr, status, err) {
